@@ -1,0 +1,316 @@
+<!-- Website Footer -->
+<div class="footer">
+    <div class="container">
+        <div class="footer__inner d-flex-wrap justify-content-space-between">
+            <!-- Footer Left Section -->
+            <div class="footer__left">
+                
+                <!-- Footer Logo -->
+                <div class="footer__logo">
+                    <a href="/"><img src="{{ 'ayla_footer-logo1.svg' | asset_url }}"  itemprop="logo"></a>
+                    {% if section.settings.footer_logo_subtext %}
+                        <p>{{ section.settings.footer_logo_subtext }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Footer Signup Form -->
+                <div class="footer__updates">
+                    <p>Sign Up for Updates</p>
+                    <div class="footer__form">
+                        <div class="footer__formfields d-flex">
+                            <input placeholder="Get Updates" type="text"/>
+                            <input type="submit" value="Subscribe">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Social Icons -->
+                <div class="footer__social">
+                    <ul class="d-flex-wrap">
+                        {% if section.settings.footer_facebook_link %}
+                            <li>
+                                <a target="_blank" href="{{ section.settings.footer_facebook_link }}">
+                                    <i aria-hidden="true" class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if section.settings.footer_instagram_link %}
+                            <li>
+                                <a target="_blank" href="{{ section.settings.footer_instagram_link }}">
+                                    <i aria-hidden="true" class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Right Section -->
+            <div class="footer__right d-flex-wrap justify-content-space-between">
+                <!-- Footer Nav 1 -->
+                <div class="footer__menu">
+                    <h4>{{section.settings.footer_text_one}}<div class="footer__toggle">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </h4>
+                    <ul>
+                        {% for link in linklists[section.settings.footer_linklist].links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Footer Nav 2 -->
+                <div class="footer__menu">
+                    <h4>{{section.settings.footer_text_two}}<div class="footer__toggle">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </h4>
+                    <ul>
+                        {% for link in linklists[section.settings.footer_linklist_two].links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Footer Nav 3 -->
+                <div class="footer__menu">
+                    <h4>{{section.settings.footer_text_three}}<div class="footer__toggle">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </h4>
+                    <ul>
+                        {% for link in linklists[section.settings.footer_linklist_three].links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Footer Nav 4 -->
+                <div class="footer__menu">
+                    <h4>{{section.settings.footer_text_fourth}}<div class="footer__toggle">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </h4>
+                    <ul>
+                        {% for link in linklists[section.settings.footer_linklist_fourth].links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Footer Area -->
+        <div class="footer__mobile">
+            <div class="footer__mobilelogo">
+                <img src="{{ 'ayla_footer-logo1.svg' | asset_url }}"  itemprop="logo">
+                {% if section.settings.footer_logo_subtext %}
+                    <p>{{ section.settings.footer_logo_subtext }}</p>
+                {% endif %}
+            </div>
+            <div class="footer__mobilesocial">
+                <ul class="d-flex-wrap justify-content-center">
+                    {% if section.settings.footer_facebook_link %}
+                        <li>
+                            <a target="_blank" href="{{ section.settings.footer_facebook_link }}">
+                                <i aria-hidden="true" class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.footer_twitter_link %}
+                        <li>
+                            <a target="_blank" href="{{ section.settings.footer_twitter_link }}">
+                                <i aria-hidden="true" class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.footer_pinterest_link %}
+                        <li>
+                            <a target="_blank" href="{{ section.settings.footer_pinterest_link }}">
+                                <i aria-hidden="true" class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.footer_instagram_link %}
+                        <li>
+                            <a target="_blank" href="{{ section.settings.footer_instagram_link }}">
+                                <i aria-hidden="true" class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="footer__mobilecopyrightmenu">
+                <ul class="d-flex-wrap justify-content-center">
+                    {% for link in linklists[section.settings.privacy_menu].links %}
+                        <li>
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Website Copyright Section -->
+<div class="copyright">
+    <div class="container">
+        <div class="copyright__inner d-flex-wrap justify-content-center align-item-center">
+            <div class="copyright__info d-flex-wrap align-item-center">
+                <p>{{ section.settings.footer_copyright }}</p>
+                <ul class="d-flex-wrap">
+                    {% if section.settings.footer_phone %}
+                        <li>Phone:
+                            <a href="{{ section.settings.footer_phone }}">{{ section.settings.footer_phone }}.</a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.footer_email %}
+                        <li>Email: @<a href="{{ section.settings.footer_email }}">{{ section.settings.footer_email }}</a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.footer_location %}
+                        <li>Store:
+                            {{ section.settings.footer_location }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="copyright__menu">
+                <ul class="d-flex-wrap">
+                    {% for link in linklists[section.settings.privacy_menu].links %}
+                        <li>
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Footer",
+    "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "footer_logo_subtext",
+      "label": "Footer logo subtext"
+    },
+    {
+      "type": "text",
+      "id": "footer_facebook_link",
+      "label": "Footer facebook link"
+    },
+    {
+      "type": "text",
+      "id": "footer_instagram_link",
+      "label": "Footer instagram link"
+    },
+    {
+      "type": "text",
+      "id": "footer_pinterest_link",
+      "label": "Footer pinterest link"
+    },
+    {
+      "type": "text",
+      "id": "footer_twitter_link",
+      "label": "Footer twitter link"
+    },
+    {
+      "type": "text",
+      "id": "footer_text_one",
+      "label": "Title 1"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_linklist",
+      "label": "First menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text_two",
+      "label": "Title 2"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_linklist_two",
+      "label": "Second menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text_three",
+      "label": "Title 3"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_linklist_three",
+      "label": "Third menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text_fourth",
+      "label": "Title 4"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_linklist_fourth",
+      "label": "Fourth menu",
+      "default": "footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "footer_copyright",
+      "label": "Footer copyright"
+    },
+    {
+      "type": "text",
+      "id": "footer_phone",
+      "label": "Footer phone"
+    },
+     {
+      "type": "text",
+      "id": "footer_email",
+      "label": "Footer email"
+    },
+     {
+      "type": "text",
+      "id": "footer_location",
+      "label": "Footer location"
+    },
+    {
+      "type": "link_list",
+      "id": "privacy_menu",
+      "label": "Privacy menu",
+      "default": "footer"
+    }
+
+    ]
+  }
+
+{% endschema %}

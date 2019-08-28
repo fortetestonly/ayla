@@ -1,0 +1,97 @@
+{% paginate search.results by 6 %}
+   <div class="pagebanner" style="background-image: url('https://cdn.shopify.com/s/files/1/0048/9186/9233/files/sl_76ac9985-f8d3-4fed-82f6-35842ff1d2cf.jpg?2191');">
+    <div class="container">
+      <div class="pagebanner__inner d-flex-wrap justify-content-center align-item-center">
+        <h1>Search</h1>
+      </div>
+    </div>
+  </div>
+
+
+<div class="searchtemplate">
+  <div class="page-center">
+  <div class="searchtemplate__top">    
+
+    <form action="/search" method="get" role="search">
+      <input type="search"
+             name="q"
+             id="Search"
+             value="{{ search.terms | escape }}"
+             placeholder="{{ 'general.search.placeholder' | t }}">
+      <button type="submit" class="btn">
+        {% include 'icon-search' %}
+        <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+      </button>
+    </form>
+  
+    <h2>
+      {% if search.performed %}
+        {% if search.results_count == 0 %}
+          {{ 'general.search.no_results_html' | t: terms: search.terms }}
+        {% else %}
+          {{ 'general.search.results_for_html' | t: terms: search.terms }}
+        {% endif %}
+      {% else %}
+        {{ 'general.search.title' | t }}
+      {% endif %}
+    </h2>
+
+  </div>
+
+
+{% if search.performed %}
+  <div class="searchtemplate__list">
+    <ul class="d-flex flex-wrap-wrap">
+      {% for item in search.results %}
+        <li>
+          <div class="searchtemplate__cell">
+            {% assign featured_image = item.image | default: item.featured_image %}
+          {% if featured_image != blank %}
+            <a class="searchtemplate__art" href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+              {{ featured_image | img_url: '240x240' | img_tag: featured_image.alt }}
+            </a>
+          {% endif %}
+
+          <h5>{{ item.title | link_to: item.url }}</h5>
+
+          {% if item.object_type == 'product' %}
+            <p>
+              {% if item.compare_at_price > item.price %}
+                {% if item.price_varies %}
+                  {% assign sale_price = item.price | money %}
+                  {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                {% else %}
+                  {{ 'products.product.on_sale' | t }}
+                  <span itemprop="price">{{ item.price | money }}</span>
+                {% endif %}
+                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                <s>{{ item.compare_at_price | money }}</s>
+              {% else %}
+                {% if item.price_varies %}
+                  {% assign price = item.price | money %}
+                  <span itemprop="price">{{ 'products.product.from_text_html' | t: price: price }}</span>
+                {% else %}
+                  <span itemprop="price">{{ item.price | money }}</span>
+                {% endif %}
+              {% endif %}
+              {% unless item.available %}
+              {{ 'products.product.sold_out' | t }}
+              {% endunless %}
+            </p>
+          {% else %}
+            <p>{{ item.content | strip_html | truncatewords: 20 }}</p>
+          {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+    {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
+    {% endif %}
+  {% endif %}
+</div>
+</div>
+
+{% endpaginate %}

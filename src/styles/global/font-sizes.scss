@@ -1,0 +1,84 @@
+@mixin fs($size){
+	font-size:$size;
+}
+
+h1, h2 , h3 , h4 , h5 , h6 {
+	font-weight: normal;
+}
+
+h1{
+	@include fs($fs-60);
+	line-height: 1.2;
+	margin: 0 0 10px;
+}
+
+h2{
+	@include fs($fs-29);
+	line-height: 1.2;
+	margin: 0 0 10px;
+	@media(max-width: $break-xsm) {
+		font-size: $fs-24;
+	}
+	&.large {
+		font-size: 42px;
+	    letter-spacing: -0.7px;
+		margin-bottom: 30px;
+		@media(max-width: $break-xsm) {
+			font-size: $fs-29;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+h3{
+	@include fs($fs-24);
+	line-height: 1.2;
+	margin: 0 0 10px;
+	letter-spacing: 0.1px;
+	@media(max-width: $break-xsm) {
+		font-size: 20px;
+	}
+}
+
+h4{
+	@include fs($fs-20);
+	line-height: 1.2;
+	margin: 0 0 10px;
+}
+
+h5{
+	@include fs($fs-17);
+	line-height: 1.2;
+	margin: 0 0 10px;
+}
+
+h6{
+	@include fs($fs-14);
+	line-height: 1.2;
+	margin: 0 0 10px;
+
+}
+
+p.large{
+	@include fs($fs-17);
+	line-height: 1.4;
+}
+
+p{
+	@include fs($fs-14);
+	line-height: 1.6;
+	margin: 0 0 10px;
+	&.large {
+		font-size: $fs-17;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+
+
+p.small{
+	@include fs($fs-12);
+	line-height: 1.5;
+}

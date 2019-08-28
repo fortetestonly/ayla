@@ -1,0 +1,162 @@
+/******* Default theme color variable *******/
+$color-primary: {{ settings.color_primary }};
+$color-body-text: {{ settings.color_body_text }};
+/******* Default theme color variable end *******/
+
+
+
+/******* Color used in wesbite *******/
+$color-brown : #5c4141;
+$color-darkbrown : #4d3837;
+$color-morebrown : #5d4140;
+$grey-f5-light : #f5f5f9;
+$grey-f5 : #f5f4f4;
+$grey-ee : #eeeefa;
+$grey-e6 : #e6e6fa;
+$grey-f9 : #f9f9f9;
+$color-accent : #c9be9e;
+$color-accent-hover : #dbd4bf;
+$color-lightyellow: #c8bfa0;
+$color-lightgrey: #777;
+$color-warning : #92343c;
+$color-white : #ffffff;
+$color-lightwhite : #fafcf9;
+$color-black : #000;
+$color-active : #57814f;
+$color-active-hover : #75976f;
+$color-active-light : #85BF93;
+$color-active-dark : #486a41;
+$color-yellow : #dfc166;
+$color-lightyellow : #c9be9e;
+$color-light-grey: #f5f4f9;
+$theme-border-color : #d6d6d6;
+$brown-border-color: #3f2727;
+$color-body: #ffffff;
+$color-border: #f6f6f6;
+/******* Color used in wesbite end *******/
+
+
+/******* Form error-state *******/
+$color-disabled: $color-black;
+$color-disabled-border: $color-black;
+$color-error: $color-black;
+$color-error-bg: $color-black;
+$color-success: $color-black;
+$color-success-bg: $color-black;
+$color-errorred: #f33f33;
+/******* Form error-state end *******/
+
+
+
+/******* Fonts used in website *******/
+$font : 'Font';
+/******* Fonts used in website end *******/
+
+
+
+/******* Defautl typography *******/
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-stack-header: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-weight-header: $font-weight-bold;
+$font-stack-body: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size-base: {{ settings.type_base_size }};
+/******* Defautl typography end *******/
+
+
+
+/******* Typography Sizes *******/
+$fs-12 : 12px;
+$fs-14 : 14px;
+$fs-17 : 17px;
+$fs-20 : 20px;
+$fs-24 : 24px;
+$fs-29 : 29px;
+$fs-35 : 35px;
+$fs-42 : 42px;
+$fs-50 : 50px;
+$fs-60 : 60px;
+$fs-72 : 72px;
+$fs-87 : 87px;
+$fs-104 : 104px;
+$fs-125 : 125px;
+/******* Typography Sizes end *******/
+
+
+/******* Custom break point *******/
+$break-xmd-min: 1091px;
+$break-xmd: 1090px;
+$break-mdmin: 992px;
+$break-md: 991px;
+$break-xsm: 800px;
+$break-sm: 767px;
+$break-xs: 580px;
+$break-mobile: 480px;
+$break-footer: 950px;
+/******* Custom break point end *******/
+
+
+
+
+
+/******* Grid break point *******/
+$grid-medium: 750px;
+$grid-large: 990px;
+$grid-widescreen: 1400px;
+$grid-pagecenter: 1000px;
+$grid-gutter: 30px;
+
+$small: 'small';
+$medium: 'medium';
+$medium-down: 'medium-down';
+$medium-up: 'medium-up';
+$large: 'large';
+$large-down: 'large-down';
+$large-up: 'large-up';
+$widescreen: 'widescreen';
+/******* Grid break point end *******/
+
+
+
+
+
+
+
+
+// The `$breakpoints` list is used to build our media queries.
+// You can use these in the media-query mixin.
+$breakpoints: (
+  $small '(max-width: #{$grid-medium - 1})',
+  $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
+  $medium-down '(max-width: #{$grid-large - 1})',
+  $medium-up '(min-width: #{$grid-medium})',
+  $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
+  $large-down '(max-width: #{$grid-widescreen - 1})',
+  $large-up '(min-width: #{$grid-large})',
+  $widescreen '(min-width: #{$grid-widescreen})'
+);
+
+/*============================================================================
+  Generate breakpoint-specific column widths and push classes
+    - Default column widths: $breakpoint-has-widths: ($small, $medium-up);
+    - Default is no push classes
+    - Will not work if `styles/global/grid.scss` is removed
+==============================================================================*/
+$breakpoint-has-widths: ($small, $medium-up);
+$breakpoint-has-push: ();
+
+/*================ Sizing Variables ================*/
+$width-site: 1180px;
+$gutter: 30px;
+
+/*================ Site Content Width ================*/
+$width-site-cm: $grid-widescreen;
+
+/*================ Z-Index ================*/
+$z-index-dropdown: 2;
+$z-index-skip-to-content: 10000; // really high to be safe of app markup
+
+/*================ SVG ================*/
+$svg-select-icon: #{'{{ "ico-select.svg" | asset_url }}'};
+
+

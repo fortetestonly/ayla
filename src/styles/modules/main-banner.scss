@@ -1,0 +1,141 @@
+/* ============= main banner homepage =============*/
+.main-banner{
+	height:671px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding-top: 35px;
+	padding-bottom: 35px;
+	background-size: cover;
+	position: relative;
+
+	@media(max-width: $break-sm) {
+		background-image: none !important;
+		height: auto;
+		padding: 0;
+
+		.page-center {
+			padding: 0;
+		}
+	}
+
+	.main-banner__image {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    -o-object-position: right; object-position: right;
+	    @include objectfit(cover);
+	    display: none;
+	    @media(max-width: $break-sm) {
+			display: block;
+		}
+	}
+}
+
+.main-banner__text {
+	width: 100%;
+    max-width: 562px;
+    position: relative;
+    @media(max-width: $break-sm) {
+    	padding: 0 15px;
+		max-width: 100%;
+		min-height: 385px;
+		text-align: center;
+		@include flexbox;
+		@include align-items(center);
+		@include justify-content(center);
+		& > div {
+			position: relative;
+			z-index: 9;
+		}
+	}
+	h2{
+		@include fs($fs-60);
+		letter-spacing: 0.1px;
+		color:$color-brown;
+		margin-bottom: 30px;
+		color: $color-brown;
+		@media(max-width: $break-sm) {
+			color: $color-white;
+			@include fs($fs-35);
+		}
+	}
+	p{
+		@include fs($fs-17);
+		line-height: 1.44;
+		margin: 0;
+		max-width: 400px;
+		width: 100%;
+		color: $color-brown;
+		@media(max-width: $break-sm) {
+			display: none;
+		}
+	}
+}
+
+.banner-btn-group{
+	width: 100%;
+	clear:both;
+	padding-top: 103px;
+	.main-banner__mobiletext {
+		margin-top: 18px;
+		display: none;
+		p{
+			@include fs($fs-17);
+			line-height: 24px;
+			margin: 0;
+			max-width: 400px;
+			width: 100%;
+			color: $color-brown;
+			max-width: 100%;
+		}
+		@media(max-width: $break-sm) {
+			display: block;
+		}
+	}
+	@media(max-width: $break-sm) {
+		padding: 25px 15px 0;
+	}
+	li {
+		max-width: 248px;
+		width: calc(100% / 3);
+		@media(max-width: $break-xmd) {
+			max-width: 235px;
+		}
+		@media(max-width: $break-sm) {
+			max-width: 100%;
+			width: 100%;
+
+			& + li {
+				margin-top: 24px;
+			}
+		}
+		a {
+			@include transition-fast();
+			width: 100%;
+			height: 49px;
+			line-height: 49px;
+			text-align: center;
+			display: block;
+			background-color: $color-active;
+			color: $color-white;
+			position: relative;
+			&::after {
+				content: "\f105";
+				font-family: 'fontAwesome';
+				position: absolute;
+				right: 25px;
+				font-size: 20px;
+				@include transition-fast();
+
+			}
+			&:hover::after {
+				right: 20px;
+			}
+			&:hover {
+				background-color: $color-brown;
+			}
+		}
+	}	
+}

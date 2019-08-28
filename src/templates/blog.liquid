@@ -1,0 +1,94 @@
+{% paginate blog.articles by 6 %}
+
+  {%- assign blog_title = blog.title -%}
+
+  {% if current_tags %}
+    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+  {% endif %}
+
+
+  <div class="pagebanner" style="background-image: url('https://cdn.shopify.com/s/files/1/0048/9186/9233/files/sl_76ac9985-f8d3-4fed-82f6-35842ff1d2cf.jpg?2191');">
+    <div class="container">
+      <div class="pagebanner__inner d-flex-wrap justify-content-center align-item-center">
+        <h1>{{ blog_title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  
+
+  {% if blog.all_tags.size > 0 %}
+    <h2>{{ 'blogs.general.categories' | t }}</h2>
+
+    <ul>
+      {% for tag in blog.all_tags %}
+
+        {% if current_tags contains tag %}
+          <li>{{ tag }}</li>
+        {% else %}
+          <li>{{ tag | link_to_tag: tag }}</li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+
+  {% comment %}
+
+  Article Previews
+  ====================
+  {% endcomment %}
+
+
+
+  <div class="latestblog latestblog--update">
+    <div class="container">
+      <div class="latestblog__inner d-flex-wrap">
+        {% for article in blog.articles %}
+        <div class="latestblog__col">
+          <div class="latestblog__cell d-flex-wrap">
+            <div class="latestblog__art">
+             {% if article.image %}
+                <a href="{{ article.url }}">
+                  {{ article | img_url: '1024x1024' | img_tag: article.title }}
+                </a>
+              {% endif %}
+            </div>
+            <div class="latestblog__content">
+              <div class="latestblog__contentinner">
+                <h3>{{ article.title }}</h3>              
+                <p class="large">{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
+                <div class="rte">
+                  {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    <p>
+                      {{ article.content | strip_html | truncatewords: 30 }}
+                    </p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="latestblog__link">            
+              <a href="{{article.url}}">Read More</a>
+            </div>
+          </div>
+        </div>
+  {% endfor %}
+      </div>
+    </div>
+
+
+    {% if paginate.pages > 1 %}
+    <div class="container">
+      {% include 'pagination' %}
+    </div>
+  {% endif %}
+
+  </div>
+
+
+
+
+{% endpaginate %}

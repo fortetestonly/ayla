@@ -1,0 +1,209 @@
+<!-- header top bar -->
+<div class="header-top-strip">
+    <div class="container d-flex justify-content-space-between align-item-center">
+        <div class="col-left">
+            {% if section.settings.topheadertext %}
+                <p>{{section.settings.topheadertext}}</p>
+            {% endif %}
+        </div>
+        <div class="col-right top-header-nav">
+            <ul class="d-flex flex-wrap-wrap">
+                {% for link in linklists[section.settings.main_linklist_topheader].links %}
+                    <li>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Website Header -->
+<div class="site-header d-flex justify-content-center flex-direction-column" data-section-id="{{ section.id }}" data-section-type="header-section">
+
+    <!-- Header Search Form -->
+    <div class="container d-flex justify-content-space-between align-item-center">
+        <div class="site-header__left d-flex align-item-center">
+            <div class="site-header__toggler">
+                <img alt="." src="{{ 'site-header-toggler.png' | asset_url }}">
+            </div>
+            <div class="site-header__search">
+                <img alt="." src="{{ 'site-header-search.png' | asset_url }}">
+                <form action="/search" class="search-form-header search-form-header--mobile" method="get" role="search">
+                    <div class="d-flex">
+                        <input type="search" name="q" id="Search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+
+                        <button class="btn-search" type="submit">
+                            {% include 'icon-magnifying-glass' %}
+                            <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Header Logo Area -->
+
+        <header class="logo-area" role="banner">
+            {% if template.name == 'index' %}
+                <h1 itemscope itemtype="http://schema.org/Organization">
+                {% else %}
+                    <div class="h1" itemscope itemtype="http://schema.org/Organization">
+                    {% endif %}
+                    <a class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}" href="/" itemprop="url">
+                        {% if section.settings.logo != blank %}
+                            {% capture image_size %}
+                                {{ section.settings.logo_max_width }}x
+                            {% endcapture %}
+                            <img src="{{ 'ayla_logo1.svg' | asset_url }}"  itemprop="logo">
+                        {% else %}
+                            {{ shop.name }}
+                        {% endif %}
+                    </a>
+                    {% if template.name == 'index' %}
+                    </h1>
+            {% else %}
+                </div>
+            {% endif %}
+        </header>
+
+        <!-- Website Navigation -->
+
+        <nav class="site-nav d-flex justify-content-center align-item-center" role="navigation">
+            <ul class="d-flex justify-content-center align-item-center">
+                {% for link in linklists[section.settings.main_linklist].links %}
+                    {% if link.links != blank %}
+                        <li>
+                            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                            <ul>
+                                {% for childlink in link.links %}
+                                    {% if childlink.links != blank %}
+                                        <li>
+                                            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                            <ul>
+                                                {% for grandchildlink in childlink.links %}
+                                                    <li>
+                                                        <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <!-- Header Search Form -->
+            <div class="header-search">
+                <button class="trigger-search btn-search" type="button">
+                    {% include 'icon-magnifying-glass' %}
+                    <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+                </button>
+
+                <form action="/search" class="search-form-header search-form-header--desktop" method="get" role="search">
+                    <div class="d-flex">
+                        <input type="search" name="q" id="Search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+
+                        <button class="btn-search" type="submit">
+                            {% include 'icon-magnifying-glass' %}
+                            <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </nav>
+
+
+        <!-- Header Customer Area -->
+
+        <div class="header-cart d-flex align-item-center">
+            {% if shop.customer_accounts_enabled %}
+                <div class="login-header">
+                    <ul>
+                        {% if customer %}
+                            <li>
+                                {% if customer.first_name != blank %}
+                                    {% capture first_name %}
+                                        <a href="/account">{{ customer.first_name }}</a>
+                                    {% endcapture %}
+                                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                                {% else %}
+                                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                            </li>
+                        {% else %}
+                            <li>
+                                {{ 'layout.customer.log_in' | t | customer_login_link }}
+                            </li>
+                            <li>
+                                {{ 'layout.customer.create_account' | t | customer_register_link }}
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+            <!-- Header Cart -->
+
+            <div class="shopcart">
+                <a class="site-header__link site-header__cart cart-link js-drawer-open-right cart-bubble--visible" href="/cart">
+                    {% include 'icon-shopping-bag' %}
+                    <span class="cart-counter">{{ cart.item_count }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }, {
+        "type": "text",
+        "id": "topheadertext",
+        "label": "Top Header Text"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist_topheader",
+        "label": "top-header-menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}

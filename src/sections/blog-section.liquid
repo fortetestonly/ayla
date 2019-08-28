@@ -1,0 +1,43 @@
+<div class="latestblog">
+   <div class="container">
+      <h2 class="large">Our Latest Blogs</h2>
+      <div class="latestblog__inner d-flex-wrap">
+         {% for article in blogs.news.articles limit: 2 %} 
+         <div class="latestblog__col">
+            <div class="latestblog__cell d-flex-wrap">
+               <div class="latestblog__art">
+                  <a href="{{article.url}}">
+                  <img src="{{ article.image.src | img_url: 'original' }}">
+                  </a>
+               </div>
+               <div class="latestblog__content">
+                  <div class="latestblog__contentinner">
+                     <p class="large">Skincase concerns</p>
+                     <h3>{{article.title}}</h3>
+                  </div>
+               </div>
+               <div class="latestblog__link">            
+                  <a href="{{article.url}}">Read More</a>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+      <div class="latestblog__button">
+         <a class="btn-yellow btn-yellow--large" href="/blogs/news/">See All Blog Posts</a>
+      </div>
+   </div>
+</div>
+{% schema %}
+   {
+   "name": "Blog Section",
+   "settings": [
+   ],
+   "presets": [
+      {
+      "name": "Blog Section",
+      "category": "banner"
+      }
+   ]
+   }
+{% endschema %}

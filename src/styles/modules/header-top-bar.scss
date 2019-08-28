@@ -1,0 +1,54 @@
+/*================ Header Top Bar ================*/
+.header-top-strip{
+	background-color: $color-brown; 
+	line-height: 37px;
+	color:$color-body;
+	p{
+		margin: 0;
+		font-size: $fs-14;
+	}
+
+	@media(max-width: $break-sm) {
+		.col-left {
+			width: 100%;
+			text-align: center;
+			padding: 10px 0;
+		}
+		.top-header-nav {
+			display: none;
+		}
+	}
+
+}
+.top-header-nav{
+	ul{
+		list-style: none;
+		margin: 0;
+		li{
+			a{
+				color:$color-white;
+				display: block;
+				font-size: $fs-14;
+			}
+			&:first-child{
+				a{
+					min-width:159px;
+					text-align: center;
+					color:$color-brown;
+					background-color: $color-accent;
+					&:hover, &:focus{
+						background-color:$color-accent-hover;
+					}
+				}
+			}
+			&:last-child{
+				a{
+					min-width:82px;
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	
+}

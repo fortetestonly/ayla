@@ -1,0 +1,71 @@
+<div class="testimonial">
+   <div class="page-center">
+      <div class="testimonial__slider testimonial__slider--js">
+         {% for block in section.blocks %}
+         <div class="testimonial__col">
+            <div class="testimonial__cell d-flex-wrap align-item-center">
+               <div class="testimonial__left">
+                  <h2>{{  block.settings.slide_text }}</h2>
+                  <h2>{{  block.settings.slide_title }}</h2>
+               </div>
+               <div class="testimonial__right">
+                  <img src="{{ block.settings.slide_img | img_url: 'original' }}" alt=".">
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Testimonial Slider",
+    "settings": [
+  {
+    "type":"header",
+    "content":"Carousel option"
+  }
+],
+"blocks": [
+  {
+  "type": "slide",
+  "name": "Slide",
+  "settings": [
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Slider title"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_text",
+          "label": "Slide text"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_img",
+          "label": "Add img for slide"
+        }
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Testimonial Slider",
+        "category": "banner"
+      }
+    ]
+  }
+{% endschema %}
+
+{% javascript %}
+  $('.testimonial__slider--js').slick({
+    infinite: true,
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+{% endjavascript %}

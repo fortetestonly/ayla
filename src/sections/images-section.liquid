@@ -1,0 +1,43 @@
+<div class="image-section">
+   <div class="page-center">
+      <h3>{{section.settings.title-images}}</h3>
+      <ul class="d-flex-wrap align-item-center">
+         {% for block in section.blocks %}
+         <li><img src="{{block.settings.repeat-images | img_url: 'original'}}" alt="." /></li>
+         {% endfor %}
+      </ul>
+   </div>
+</div>
+{% schema %}
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title-images",
+        "label": "Heading",
+        "default": "Main Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "images",
+        "name": "Image",
+        "settings": [
+           {
+            "id": "repeat-images",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Images",
+        "category": "images"
+      }
+    ]
+  }
+{% endschema %}
+

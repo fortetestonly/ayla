@@ -1,0 +1,121 @@
+.rc-section {
+	padding: 84px 0 80px;
+	overflow: hidden;
+	@media(max-width: $break-sm) {
+		padding: 50px 0;
+	}
+	h2, h3, p {
+		color: $color-brown;
+	}
+	h2 {
+	    max-width: 250px;
+	    width: 100%;
+	    min-height: 100px;
+	    @media(max-width: $break-xsm) {
+			margin-bottom: 10px;
+			min-height: auto;
+		}
+	    @media(max-width: $break-sm) {
+			max-width: 100%;
+		}
+	}
+	.rc-section__left {
+		width: 350px;
+		padding-top: 40px;		
+		@media(max-width: $break-xmd) {
+			width: 250px;
+			padding-top: 20px;
+		}
+		@media(max-width: $break-xsm) {
+			padding-top: 40px;
+		}
+		@media(max-width: $break-sm) {
+			width: 100%;
+			text-align: center;
+			padding-top: 0;
+		}
+	}
+	.rc-section__right {
+		width: calc(100% - 352px);
+		@media(max-width: $break-xmd) {
+			width: calc(100% - 252px);
+		}
+		@media(max-width: $break-sm) {
+			width: calc(100% - 100px);
+			margin: 30px auto 0;
+		}
+	}
+	.rc-section__cell {
+	    text-align: center;
+	    padding: 0 40px;
+	    @media(max-width: $break-sm) {
+			padding: 0 10px;
+		}
+	    img {
+	    	margin: 0 auto 20px;
+	    	max-width: 97%;
+	    	@include transition-fast();	    	
+	    	@media(max-width: $break-sm) {
+				max-width: 100%;
+			}
+	    }
+	    &:hover > div img {
+    		opacity: 0.8;
+    	}
+	}
+	.slick-list {
+		@media(max-width: $break-xs) {
+			overflow: visible;
+			.slick-slide {
+				opacity: 0.5;
+				&.slick-current {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.slick-arrow {
+		z-index: 99;
+		&.slick-disabled {
+			display: none !important;
+		}
+		&.slick-prev:before,
+		&.slick-next:before {
+			color: $color-brown;
+			font-family: 'fontAwesome';
+			font-size: 40px;
+			opacity: 1;
+			@include vertical-center();
+		}
+		&.slick-prev {
+			@media(min-width: $break-mdmin ) {
+				left: 0;
+			}
+			@media(max-width: $break-md) {
+				left: 0;
+			}
+			@media(max-width: $break-sm) {
+				left: -25px;
+			}
+		}
+		&.slick-next {
+			@media(min-width: $break-mdmin ) {
+				right: 0;
+			}
+			@media(max-width: $break-md) {
+				right: 0;
+			}
+			@media(max-width: $break-sm) {
+				right: -25px;
+			}
+		}
+		&.slick-prev:before {
+			content: "\f104";
+			right: 0;
+		}
+		&.slick-next:before {
+			content: "\f105";
+		}
+	}
+	
+}

@@ -1,0 +1,208 @@
+/*================ Slate specific reset ================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+a:focus {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*================ Form element helpers ================*/
+form {
+  margin: 0;
+}
+
+// Prevent zoom on touch devices in active inputs
+@include media-query($medium-down) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+button,
+input[type="submit"],
+label[for] {
+  cursor: pointer;
+}
+
+button:focus , input:focus {
+  outline: none;
+}
+
+input[type="submit"] {
+  -webkit-appearance: none;-moz-appearance: none;appearance: none;
+}
+
+
+optgroup {
+  font-weight: $font-weight-bold;
+}
+
+// Force option color (affects IE only)
+option {
+  color: $color-body-text;
+  background-color: $color-body;
+}
+
+// hide outline on focus for elements which are given focus by JS
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+/*============================================================================
+  Fast Tap
+  enables no-delay taps (FastClick-esque) on supporting browsers
+==============================================================================*/
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea {
+  touch-action: manipulation;
+  @include transition-fast();
+}
+
+a:focus,
+.slick-slide:focus {
+  outline: none;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.slick-track {
+  display: -webkit-box !important;display: -ms-flexbox !important;display: flex !important;
+}
+
+input {
+  padding: 8px 12px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="submit"] {
+  -webkit-appearance: none;-moz-appearance: none;appearance: none;
+}
+
+.pagebanner {
+  background-color: $color-brown;
+  background-position: center center;
+  background-size: cover;
+  .pagebanner__inner {
+    position: relative;
+    z-index: 9;
+    height: 300px;
+    @media(max-width: $break-sm) {
+      height: 220px;
+    }
+    h1 {
+      color: $color-brown;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @media(max-width: $break-md) {
+        font-size: $fs-42;
+      }
+      @media(max-width: $break-sm) {
+        font-size: $fs-35;
+      }
+    }
+  }
+}
+
+.quantity-plusminus {
+  button {
+    background-color: transparent;
+    border: 1px solid $color-lightyellow;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    font-size: 24px;
+    text-align: center;
+    overflow: hidden;
+    color: $color-brown;    
+    &:hover {
+      border-color: $color-brown;
+    }
+  }
+  input {
+    width: 40px;
+    text-align: center;
+    border: 0;
+    font-size: 18px;
+    padding: 8px;
+    font-weight: bold;
+    color: $color-brown;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    margin: 0; 
+  }
+}
+
+
+.pagination {
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    span {
+      display: inline-block;
+      margin-bottom: 10px;
+      &.current ,
+      a {
+        border: 1px solid $color-active;
+        padding: 8px 12px;
+        border-radius: 2px;
+        display: inline-block;
+        @include transition-fast();
+        &:hover {
+          background-color: $color-active;
+          color: $color-white;
+        }
+      }     
+      &.current {
+        background-color: $color-active;
+        color: $color-white;
+      }
+      & + span {
+        margin-left: 10px;
+      }
+    }
+  }

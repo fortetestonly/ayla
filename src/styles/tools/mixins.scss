@@ -1,0 +1,199 @@
+/******* Clear both mixin *******/
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+/******* Clear both mixin end *******/
+
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      -webkit-#{$property}: $value;
+    } @else if $prefix == moz {
+      -moz-#{$property}: $value;
+    } @else if $prefix == ms {
+      -ms-#{$property}: $value;
+    } @else if $prefix == o {
+      -o-#{$property}: $value;
+    } @else if $prefix == spec {
+      #{$property}: $value;
+    } @else  {
+      @warn 'Unrecognized prefix: #{$prefix}';
+    }
+  }
+}
+
+/*================ Media Query Mixin ================*/
+@mixin media-query($media-query) {
+  $breakpoint-found: false;
+
+  @each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $declaration: nth($breakpoint, 2);
+
+    @if $media-query == $name and $declaration {
+      $breakpoint-found: true;
+
+      @media only screen and #{$declaration} {
+        @content;
+      }
+    }
+  }
+
+  @if $breakpoint-found == false {
+    @warn 'Breakpoint "#{$media-query}" does not exist';
+  }
+}
+
+/*================ Responsive Show/Hide Helper ================*/
+@mixin responsive-display-helper($breakpoint: '') {
+  // sass-lint:disable no-important
+  .#{$breakpoint}show {
+    display: block !important;
+  }
+
+  .#{$breakpoint}hide {
+    display: none !important;
+  }
+}
+
+
+/*================ Responsive Text Alignment Helper ================*/
+@mixin responsive-text-align-helper($breakpoint: '') {
+  // sass-lint:disable no-important
+  .#{$breakpoint}text-left {
+    text-align: left !important;
+  }
+
+  .#{$breakpoint}text-right {
+    text-align: right !important;
+  }
+
+  .#{$breakpoint}text-center {
+    text-align: center !important;
+  }
+}
+
+
+/******* Visibility *******/
+@mixin visually-hidden() {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+@mixin visually-shown($position: inherit) {
+  position: $position !important;
+  overflow: auto;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+/******* Visibility end *******/
+
+
+/******* Element transition *******/
+@mixin transition-fast() {
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+@mixin transition-veryfast() {
+  -webkit-transition: all ease 0.1s;
+  -o-transition: all ease 0.1s;
+  transition: all ease 0.1s;
+}
+/******* Element transition end *******/
+
+
+/******* Object fit mixin *******/
+@mixin objectfit($objectfitvalue) {
+  -o-object-fit: $objectfitvalue;
+  object-fit: $objectfitvalue;
+}
+@mixin objectposition($objectpositionvalue) {
+  -o-object-position: $objectpositionvalue;
+  object-position: $objectpositionvalue;
+}
+/******* Object fit mixin *******/
+
+
+
+/******* Absolute center element mixin *******/
+@mixin vertical-center() {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);
+}
+
+@mixin both-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50% , -50%);-ms-transform: translate(-50% , -50%);transform: translate(-50% , -50%);
+}
+/******* Absolute center element mixin end *******/
+
+
+/******* Transition delay with value *******/
+@mixin transition-delay($delayvalue) {
+  -webkit-transition-delay: $delayvalue;
+  -o-transition-delay: $delayvalue;
+  transition-delay: $delayvalue;
+}
+/******* Transition delay with value end *******/
+
+
+
+@mixin appearance() {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+
+/******* Please enter the blur as you want *******/
+@mixin blur($blurvalue) {
+  -webkit-filter: blur($blurvalue);
+  filter: blur($blurvalue);
+}
+/******* Please enter the blur as you want end *******/
+
+
+/******* Please enter the $scalevalue == some value to scale the element *******/
+@mixin scale($scalevalue) {
+  -webkit-transform: scale($scalevalue);
+  -ms-transform: scale($scalevalue);
+  transform: scale($scalevalue);
+}
+/******* Please enter the $scalevalue == some value to scale the element end *******/
+
+
+/******* please enter the color value for custom placeholder color *******/
+@mixin placeholder-color($placeholderColor) {
+  ::-webkit-input-placeholder {
+  color: $placeholderColor;
+  }
+  ::-moz-placeholder {
+  color: $placeholderColor;
+  }
+  :-ms-input-placeholder {
+  color: $placeholderColor;
+  }
+  :-moz-placeholder {
+  color: $placeholderColor;
+  }
+}
+/******* please enter the color value for custom placeholder color end *******/
+

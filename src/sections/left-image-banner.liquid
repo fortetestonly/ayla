@@ -1,0 +1,55 @@
+<div class="li-section d-flex-wrap">
+   <div class="container">
+      <div class="li-section__inner d-flex-wrap">
+         <div class="li-section__col li-section__col-left">
+            <h2 class="large">{{section.settings.title-banner}}</h2>
+            <img src="{{section.settings.banner-images | img_url:'master' }}">
+         </div>
+         <div class="li-section__col li-section__col-right">
+            {% if section.settings.title-banner %}
+            <h2 class="large">{{section.settings.title-banner}}</h2>
+            {% endif %}
+            {% if section.settings.title-underline %}
+            <h2>{{section.settings.title-underline}}</h2>
+            {% endif %}
+            {% if section.settings.description %}
+            <p>{{section.settings.description}}</p>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+</div>    
+{% schema %}
+  {
+    "name": "Left Image Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title-banner",
+        "label": "Right Heading",
+        "default": "Main Title"
+      },{
+        "type": "text",
+        "id": "title-underline",
+        "label": "Right Heading Underline",
+        "default": "Main Title"
+      },{
+        "type": "textarea",
+        "id": "description",
+        "label": "Right Description",
+        "default": "Main Title"
+      },{
+            "id": "banner-images",
+            "type": "image_picker",
+            "label": "Banner Image"
+          }
+    ],
+    "presets": [
+      {
+        "name": "Left Image Banner",
+        "category": "banner"
+      }
+    ]
+  }
+{% endschema %}
+

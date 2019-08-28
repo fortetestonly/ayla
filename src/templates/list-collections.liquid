@@ -1,0 +1,179 @@
+{% comment %}
+  This page represents the /collections and /products pages.
+{% endcomment %}
+
+ <div class="pagebanner" style="background-image: url('https://cdn.shopify.com/s/files/1/0048/9186/9233/files/sl_76ac9985-f8d3-4fed-82f6-35842ff1d2cf.jpg?2191');">
+    <div class="container">
+      <div class="pagebanner__inner d-flex-wrap justify-content-center align-item-center">
+        <h1>{{ page_title }}</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="listcollections">
+    <div class="page-center">
+      <div class="listcollections__inner d-flex-wrap">
+
+        <div class="listcollections__col">
+          <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection1.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic Assence</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        <div class="listcollections__col">
+          <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection2.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic facial oil</h3>
+              </div>
+            </a>
+          </div> 
+        </div>
+        
+        <div class="listcollections__col">
+         <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection3.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic skin care</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+          
+        <div class="listcollections__col">
+          <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection4.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic hair care</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        <div class="listcollections__col">
+          <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection5.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic body care</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        <div class="listcollections__col">
+         <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection3.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic hair color</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        <div class="listcollections__col">
+          <div class="listcollections__cell">
+            <a href="#">
+              <div class="listcollections__art">
+                <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection5.jpg?2192" alt=".">
+              </div>
+              <div class="listcollections__content">
+                <h3>Organic body care</h3>
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        <div class="listcollections__col">
+         <div class="listcollections__cell">
+          <a href="#">
+            <div class="listcollections__art">
+              <img src="https://cdn.shopify.com/s/files/1/0050/6993/0545/files/collection3.jpg?2192" alt=".">
+            </div>
+            <div class="listcollections__content">
+              <h3>Organic hair color</h3>
+            </div>
+          </a>
+          </div>          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!-- <div class="catcollection">
+    <div class="container">
+       <div class="catcollection__inner d-flex-wrap">
+          {% for collection in collections %}
+            {% unless collection.handle == 'frontpage' %}
+            <div class="catcollection__col">
+              <div class="catcollection__cell">                
+                  {% if collection.image != blank %}
+                    <div class="catcollection__art">
+                      <div class="catcollection__image">
+                    {{ collection | img_url: '480x480' | img_tag: collection.title }}
+                      </div>
+                      <div class="catcollection__icons">
+                        <ul class="d-flex-wrap justify-content-center">                          
+                          <li>
+                            <a href="{{ product.url | within: collection }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  {% elsif collection.products.first != blank %}
+                  <div class="catcollection__art">
+                      <div class="catcollection__image">
+                        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}                        
+                      </div>
+                      <div class="catcollection__icons">
+                        <ul class="d-flex-wrap justify-content-center">                          
+                          <li>
+                            <a href="{{ product.url | within: collection }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                  </div>
+                  {% else %}
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                  {% endif %}
+
+                <p>
+                  <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
+                </p>
+              </div>
+            </div>              
+            {% endunless %}
+          {% endfor %}
+    </div>
+  </div>
+</div> -->

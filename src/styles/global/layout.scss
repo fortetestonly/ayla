@@ -1,0 +1,38 @@
+/*================ General layout styles ================*/
+body,
+html {
+  background-color: $color-body;
+  font-size: $fs-14;
+  font-family: $font;
+}
+
+a{
+	text-decoration:none;
+	color:$color-active;
+	@include prefix(transition, all 300ms ease-in-out, webkit moz spec);
+}
+
+.page-width {
+  @include clearfix();
+  //max-width: $width-site;
+  max-width: $width-site-cm;
+  padding: 0;
+  margin: 0 auto;
+}
+
+
+.container,
+.page-center {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;  
+}
+
+.container {
+  max-width: $width-site-cm;
+}
+
+.page-center {
+  max-width: $grid-pagecenter;
+}
+ 

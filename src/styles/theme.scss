@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*============================================================================
+  [replace with theme name] | Built with Slate
+    - You cannot use native CSS/Sass @imports in this file without a build script
+==============================================================================*/
+
+
+/*================ FONTS ================*/
+body {
+	font-family: 'Font';
+}
+
+
+/*================ UTILS ================*/
+@import url('tools/mixins.scss');
+
+/*================ SETTINGS ================*/
+@import url('settings/variables.scss.liquid');
+
+/*================ COMMON ================*/
+@import url('global/normalize.scss');
+@import url('global/slate-reset.scss');
+@import url('global/helper-classes.scss');
+@import url('global/grid.scss');
+@import url('global/layout.scss');
+@import url('global/icons.scss');
+@import url('global/rte.scss');
+@import url('global/responsive-tables.scss');
+@import url('global/links-buttons.scss');
+@import url('global/forms.scss');
+@import url('global/blank-states.scss');
+@import url('global/flex-classes.scss');
+@import url('global/font-sizes.scss');
+@import url('global/button-styles.scss');
+
+/*================ MODULES ================*/
+@import url('modules/header-top-bar.scss');
+@import url('modules/site-header.scss');
+@import url('modules/main-banner.scss');
+@import url('modules/images-section.scss');
+@import url('modules/gift-card-template.scss');
+@import url('modules/right-collection.scss');
+@import url('modules/left-image-banner.scss');
+@import url('modules/blog-section.scss');
+@import url('modules/myhavtron-collection.scss');
+@import url('modules/left-image-right-content.scss');
+@import url('modules/testimonial-slider.scss');
+@import url('modules/template-collection.scss'); 
+@import url('modules/template-cart.scss'); 
+@import url('modules/right-cart.scss'); 
+@import url('modules/product.scss');
+@import url('modules/password.scss');
+@import url('modules/list-collections.scss');
+@import url('modules/template-search.scss');
+@import url('modules/footer.scss');
+@import url('modules/slick.scss');
+@import url('modules/slick-theme.scss'); 

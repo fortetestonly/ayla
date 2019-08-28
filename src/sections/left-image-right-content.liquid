@@ -1,0 +1,58 @@
+<div class="lcri">
+   <div class="container">
+      <div class="lcri__inner d-flex-wrap">
+         <div class="lcri__left">
+            <img src="{{section.settings.banner_image | img_url: 'master'}}" alt=".">
+         </div>
+         <div class="lcri__right">
+            <h2 class="large">{{section.settings.title}}</h2>
+            {{section.settings.description}}
+            <div class="lcri__button">
+               <a class="btn-yellow" href="{{section.settings.button_link}}"> {{section.settings.button_title}}</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Left image right content",
+    "settings": [
+      {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Logo image"
+    },{
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Main Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Main Title"
+      },
+      {
+        "type": "text",
+        "id": "button_title",
+        "label": "Button Title",
+        "default": "Main Title"
+      },
+      {
+        "type": "text",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "Main Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Left image right content",
+        "category": "banner"
+      }
+    ]
+  }
+{% endschema %}

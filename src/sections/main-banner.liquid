@@ -1,0 +1,76 @@
+<div class="main-banner d-flex align-item-center" style="background-image: url({{section.settings.banner-background | img_url: 'master' }})">
+   <div class="page-center">
+      <div class="main-banner__text">
+         <img class="main-banner__image" src="{{section.settings.banner-background | img_url: 'master' }}" alt=".">
+         <div>
+            <h2>{{section.settings.title}}</h2>
+            <p>{{section.settings.description-text}}</p>
+         </div>
+      </div>
+      <div class="banner-btn-group">
+         <ul class="d-flex flex-wrap-wrap justify-content-space-between">
+            {% for block in section.blocks %}
+            <li>
+               {% if block.settings.button-text %}
+               <a href="{{block.settings.button-link}}">{{block.settings.button-text}}</a>
+               {% endif %}
+            </li>
+            {% endfor %}
+         </ul>
+         <div class="main-banner__mobiletext">
+            <p>{{section.settings.description-text}}</p>
+         </div>
+      </div>
+   </div>
+</div> 
+{% schema %}
+  {
+    "name": "Main Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Main Title"
+      }, 
+      {
+      "type": "image_picker",
+      "id": "banner-background",
+      "label": "Banner Background"
+    },
+    {
+       "type":      "textarea",
+       "id":        "description-text",
+       "label":     "Description",
+       "default":   "value",
+       "info":      "Text",
+       "placeholder": "Text"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "buttons",
+        "name": "Buttons",
+        "settings": [
+           {
+            "id": "button-text",
+            "type": "text",
+            "label": "Button Text"
+          },
+          {
+            "id": "button-link",
+            "type": "text",
+            "label": "Button Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Main Banner",
+        "category": "banner"
+      }
+    ]
+  }
+{% endschema %}
+
